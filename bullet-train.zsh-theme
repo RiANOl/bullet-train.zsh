@@ -543,19 +543,15 @@ prompt_perl() {
 # Go
 prompt_go() {
   setopt extended_glob
-  if [[ (-f *.go(#qN) || -d Godeps || -f glide.yaml) ]]; then
-    if command -v go > /dev/null 2>&1; then
-      prompt_segment $BULLETTRAIN_GO_BG $BULLETTRAIN_GO_FG $BULLETTRAIN_GO_PREFIX" $(go version | grep --colour=never -oE '[[:digit:]].[[:digit:]]+')"
-    fi
+  if command -v go > /dev/null 2>&1; then
+    prompt_segment $BULLETTRAIN_GO_BG $BULLETTRAIN_GO_FG $BULLETTRAIN_GO_PREFIX" $(go version | grep --colour=never -oE '[[:digit:]].[[:digit:]]+')"
   fi
 }
 
 # Rust
 prompt_rust() {
-  if [[ (-f Cargo.toml) ]]; then
-    if command -v rustc > /dev/null 2>&1; then
-      prompt_segment $BULLETTRAIN_RUST_BG $BULLETTRAIN_RUST_FG $BULLETTRAIN_RUST_PREFIX" $(rustc -V version | cut -d' ' -f2)"
-    fi
+  if command -v rustc > /dev/null 2>&1; then
+    prompt_segment $BULLETTRAIN_RUST_BG $BULLETTRAIN_RUST_FG $BULLETTRAIN_RUST_PREFIX" $(rustc -V version | cut -d' ' -f2)"
   fi
 }
 
