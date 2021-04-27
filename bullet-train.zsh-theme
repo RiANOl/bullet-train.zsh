@@ -544,7 +544,7 @@ prompt_perl() {
 prompt_go() {
   setopt extended_glob
   if command -v go > /dev/null 2>&1; then
-    prompt_segment $BULLETTRAIN_GO_BG $BULLETTRAIN_GO_FG $BULLETTRAIN_GO_PREFIX" $(go version | grep --colour=never -oE '[[:digit:]].[[:digit:]]+')"
+    prompt_segment $BULLETTRAIN_GO_BG $BULLETTRAIN_GO_FG $BULLETTRAIN_GO_PREFIX" $(go version | grep --colour=never -oE '[[:digit:]]+(\.[[:digit:]]+)+')"
   fi
 }
 
