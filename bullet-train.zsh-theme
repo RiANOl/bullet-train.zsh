@@ -93,7 +93,7 @@ if [ ! -n "${BULLETTRAIN_VIRTUALENV_FG+1}" ]; then
   BULLETTRAIN_VIRTUALENV_FG=white
 fi
 if [ ! -n "${BULLETTRAIN_VIRTUALENV_PREFIX+1}" ]; then
-  BULLETTRAIN_VIRTUALENV_PREFIX="🐍 "
+  BULLETTRAIN_VIRTUALENV_PREFIX=" "
 fi
 
 # NVM
@@ -104,7 +104,7 @@ if [ ! -n "${BULLETTRAIN_NVM_FG+1}" ]; then
   BULLETTRAIN_NVM_FG=white
 fi
 if [ ! -n "${BULLETTRAIN_NVM_PREFIX+1}" ]; then
-  BULLETTRAIN_NVM_PREFIX="⬡ "
+  BULLETTRAIN_NVM_PREFIX=" "
 fi
 
 # AWS
@@ -115,7 +115,7 @@ if [ ! -n "${BULLETTRAIN_AWS_FG+1}" ]; then
   BULLETTRAIN_AWS_FG=black
 fi
 if [ ! -n "${BULLETTRAIN_AWS_PREFIX+1}" ]; then
-  BULLETTRAIN_AWS_PREFIX="☁️"
+  BULLETTRAIN_AWS_PREFIX=" "
 fi
 
 # RUBY
@@ -126,7 +126,7 @@ if [ ! -n "${BULLETTRAIN_RUBY_FG+1}" ]; then
   BULLETTRAIN_RUBY_FG=white
 fi
 if [ ! -n "${BULLETTRAIN_RUBY_PREFIX+1}" ]; then
-  BULLETTRAIN_RUBY_PREFIX="♦️  "
+  BULLETTRAIN_RUBY_PREFIX=" "
 fi
 
 # Go
@@ -137,7 +137,7 @@ if [ ! -n "${BULLETTRAIN_GO_FG+1}" ]; then
   BULLETTRAIN_GO_FG=white
 fi
 if [ ! -n "${BULLETTRAIN_GO_PREFIX+1}" ]; then
-  BULLETTRAIN_GO_PREFIX="go "
+  BULLETTRAIN_GO_PREFIX="GO "
 fi
 
 # Rust
@@ -148,7 +148,7 @@ if [ ! -n "${BULLETTRAIN_RUST_FG+1}" ]; then
   BULLETTRAIN_RUST_FG=white
 fi
 if [ ! -n "${BULLETTRAIN_RUST_PREFIX+1}" ]; then
-  BULLETTRAIN_RUST_PREFIX="🦀"
+  BULLETTRAIN_RUST_PREFIX=" "
 fi
 
 # Kubernetes Context
@@ -179,7 +179,7 @@ if [ ! -n "${BULLETTRAIN_ELIXIR_FG+1}" ]; then
   BULLETTRAIN_ELIXIR_FG=white
 fi
 if [ ! -n "${BULLETTRAIN_ELIXIR_PREFIX+1}" ]; then
-  BULLETTRAIN_ELIXIR_PREFIX="💧"
+  BULLETTRAIN_ELIXIR_PREFIX=" "
 fi
 
 # DIR
@@ -227,7 +227,7 @@ if [ ! -n "${BULLETTRAIN_PERL_FG+1}" ]; then
   BULLETTRAIN_PERL_FG=black
 fi
 if [ ! -n "${BULLETTRAIN_PERL_PREFIX+1}" ]; then
-  BULLETTRAIN_PERL_PREFIX=🐪
+  BULLETTRAIN_PERL_PREFIX=" "
 fi
 
 # CONTEXT
@@ -243,7 +243,7 @@ fi
 
 # GIT PROMPT
 if [ ! -n "${BULLETTRAIN_GIT_PREFIX+1}" ]; then
-  ZSH_THEME_GIT_PROMPT_PREFIX="\ue0a0 "
+  ZSH_THEME_GIT_PROMPT_PREFIX=" "
 else
   ZSH_THEME_GIT_PROMPT_PREFIX=$BULLETTRAIN_GIT_PREFIX
 fi
@@ -612,10 +612,8 @@ prompt_nvm() {
 
 #AWS Profile
 prompt_aws() {
-  local spaces="  "
-
   if [[ -n "$AWS_PROFILE" ]]; then
-    prompt_segment $BULLETTRAIN_AWS_BG $BULLETTRAIN_AWS_FG $BULLETTRAIN_AWS_PREFIX$spaces$AWS_PROFILE
+    prompt_segment $BULLETTRAIN_AWS_BG $BULLETTRAIN_AWS_FG $BULLETTRAIN_AWS_PREFIX$AWS_PROFILE
   fi
 }
 
