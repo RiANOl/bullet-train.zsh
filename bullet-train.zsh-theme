@@ -28,12 +28,12 @@ if [ ! -n "${BULLETTRAIN_PROMPT_ORDER+1}" ]; then
     ruby
     virtualenv
     nvm
-    aws
     go
     rust
     elixir
     git
     hg
+    aws
     cmd_exec_time
   )
 fi
