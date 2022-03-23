@@ -137,7 +137,7 @@ if [ ! -n "${BULLETTRAIN_GO_FG+1}" ]; then
   BULLETTRAIN_GO_FG=white
 fi
 if [ ! -n "${BULLETTRAIN_GO_PREFIX+1}" ]; then
-  BULLETTRAIN_GO_PREFIX="go"
+  BULLETTRAIN_GO_PREFIX="go "
 fi
 
 # Rust
@@ -547,9 +547,15 @@ prompt_perl() {
 # Go
 prompt_go() {
   setopt extended_glob
-  if command -v go > /dev/null 2>&1; then
-    prompt_segment $BULLETTRAIN_GO_BG $BULLETTRAIN_GO_FG $BULLETTRAIN_GO_PREFIX" $(go version | grep --colour=never -oE '[[:digit:]]+(\.[[:digit:]]+)+')"
+  local go_prompt
+  if which goenv &> /dev/null; then
+    go_prompt="$(goenv version | sed -e 's/ (set.*$//' | tr '\n' ' ' | sed 's/.$//')"
+  elif command -v go > /dev/null 2>&1; then
+    go_prompt="$(go version | grep --colour=never -oE '[[:digit:]]+(\.[[:digit:]]+)+')"
+  else
+    return
   fi
+  prompt_segment $BULLETTRAIN_GO_BG $BULLETTRAIN_GO_FG $BULLETTRAIN_GO_PREFIX$go_prompt
 }
 
 # Rust
