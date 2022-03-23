@@ -586,12 +586,13 @@ prompt_nvm() {
   if type nvm >/dev/null 2>&1; then
     nvm_prompt=$(nvm current 2>/dev/null)
     [[ "${nvm_prompt}x" == "x" || "${nvm_prompt}" == "system" ]] && return
+  elif which nodenv &> /dev/null; then
+    nvm_prompt="$(nodenv version | sed -e 's/ (set.*$//' | tr '\n' ' ' | sed 's/.$//')"
   elif type node >/dev/null 2>&1; then
-    nvm_prompt="$(node --version)"
+    nvm_prompt="$(node --version | grep --colour=never -oE '[[:digit:]]+(\.[[:digit:]]+)+')"
   else
     return
   fi
-  nvm_prompt=${nvm_prompt}
   prompt_segment $BULLETTRAIN_NVM_BG $BULLETTRAIN_NVM_FG $BULLETTRAIN_NVM_PREFIX$nvm_prompt
 }
 
